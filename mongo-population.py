@@ -1,9 +1,14 @@
+import os
 from pymongo import MongoClient
 import pandas as pd
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # MongoDB Atlas connection string (replace <db_password> with your actual password)
-connection_string = "mongodb+srv://glen_miracle:smma@formative-cluster.pigsy.mongodb.net/"
+connection_string = os.getenv("MONGO_CS")
 
 try:
     # Connect to MongoDB Atlas

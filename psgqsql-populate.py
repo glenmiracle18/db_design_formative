@@ -1,14 +1,19 @@
+import os
+from dotenv import load_dotenv  # Import load_dotenv to load .env file
 import psycopg2
 import pandas as pd
 from psycopg2 import Error
 import logging
 from psycopg2.extras import execute_values
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Connection string for Neon PostgreSQL
-connection_string = "postgresql://formative-db_owner:npg_OTIvpG6RkHy0@ep-raspy-base-a2qzm3zi-pooler.eu-central-1.aws.neon.tech/formative-db?sslmode=require"
+connection_string = os.getenv("POSTGRES_CS")  # Use environment variable
 
 try:
     # Connect to the database with a timeout
@@ -63,7 +68,7 @@ try:
     satisfaction_data = [
         (str(row["CustomerID"]), visit_ids[i][0], bool(row["HighSatisfaction"]))
         for i, (_, row) in enumerate(df.iterrows())
-        if i < len(visit_ids)  # Ensure we don’t exceed visit_ids length
+        if i < len(visit_ids)  # Ensure we don't exceed visit_ids length
     ]
     execute_values(cursor, """
         INSERT INTO Satisfaction (customer_id, visit_id, satisfaction)
