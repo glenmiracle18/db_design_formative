@@ -1,0 +1,22 @@
+{
+    "_id": ObjectId(),
+    "customer": {
+        "customer_id": String,
+        "age": Number,
+        "gender": Number, // 0 = Male, 1 = Female
+        "income": Number
+    },
+    "visit": {
+        "visit_frequency": String, // "Daily", "Weekly", etc.
+        "average_spend": Number,
+        "preferred_cuisine": String,
+        "wait_time": Number,
+        "ratings": {
+            "service": Number, // 1-5
+            "food": Number,    // 1-5
+            "ambiance": Number // 1-5
+        }
+    },
+    "satisfaction": Boolean, // 0 = Not Satisfied, 1 = Satisfied
+    "recorded_at": ISODate()
+}
