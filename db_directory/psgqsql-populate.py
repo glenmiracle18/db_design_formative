@@ -6,14 +6,14 @@ from psycopg2 import Error
 import logging
 from psycopg2.extras import execute_values
 
-# Load environment variables from .env file
+
 load_dotenv()
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Connection string for Neon PostgreSQL
-connection_string = os.getenv("POSTGRES_CS")  # Use environment variable
+connection_string = os.getenv("POSTGRES_CS")  # from dotenv
 
 try:
     # Connect to the database with a timeout
@@ -22,14 +22,14 @@ try:
     cursor = conn.cursor()
     logging.info("Connected to PostgreSQL database successfully.")
 
-    # Load CSV data (replace with your actual file path)
+    # Load CSV data
     df = pd.read_csv("restaurant_customer_satisfaction.csv")
     logging.info(f"Loaded CSV with {len(df)} rows.")
 
     # Gender mapping
     gender_map = {"Male": 0, "Female": 1}
 
-    # Batch insert into Customers
+    # Batch insert into Customers operation
     customer_data = [
         (str(row["CustomerID"]), row["Age"], gender_map[row["Gender"]], row["Income"])
         for _, row in df.iterrows()
