@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.models import Customer, Visit, Satisfaction
+from .models import Customer, Visit, Satisfaction
 
 
 class CustomerSerializer(serializers.ModelSerializer):

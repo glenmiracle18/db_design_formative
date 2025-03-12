@@ -1,24 +1,23 @@
 from rest_framework import viewsets
-from rest_framework.decorators import api_view
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
-from rest_framework.response import Response
 
-from models.models import Customer, Satisfaction, Visit
-from models.serializers import CustomerSerializer, VisitSerializer, SatisfactionSerializer
+
+from .models import Customer, Satisfaction, Visit
+from .serializers import CustomerSerializer, VisitSerializer, SatisfactionSerializer
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 
-@api_view(['GET'])
-def index(request):
-    return Response({"message": "Hello, world!"})
+
 
 
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
+
+
 
 
 

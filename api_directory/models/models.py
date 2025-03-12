@@ -8,10 +8,11 @@ from django.db.models import IntegerField
 
 
 class Customer(models.Model):
-    customer_id = models.AutoField(primary_key=True)
+    customer_id = models.CharField(max_length=10, primary_key=True)
     age = models.IntegerField(blank=False, null=False, validators=[MinValueValidator(18)])
     gender = models.IntegerField(max_length=20, blank=False, null=False)
     income = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
+
 
     class Meta:
         """
@@ -26,7 +27,7 @@ class Customer(models.Model):
         """
         if not self.customer_id:
             print(Customer.objects.all().count())
-            self.customer_id = int(int(Customer.objects.annotate(customer_id_int=Cast('customer_id', IntegerField())).order_by('customer_id_int').last().customer_id )+ 1)
+            self.customer_id = str(int(Customer.objects.annotate(customer_id_int=Cast('customer_id', IntegerField())).order_by('customer_id_int').last().customer_id )+ 1)
         super().save(*args, **kwargs)
 
 
