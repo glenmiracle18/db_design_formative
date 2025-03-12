@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'models.apps.ModelsConfig',
     'rest_framework',
+    'drf_yasg'
 ]
 
 REST_FRAMEWORK = {
