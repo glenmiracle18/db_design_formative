@@ -44,15 +44,11 @@ try:
     # Batch insert into Visits
     visit_data = [
         (str(row["CustomerID"]), row["VisitFrequency"], row["AverageSpend"], row["PreferredCuisine"],
-         row["TimeOfVisit"], row["GroupSize"], row["DiningOccasion"], row["MealType"],
-         bool(row["OnlineReservation"]), bool(row["DeliveryOrder"]), bool(row["LoyaltyProgramMember"]),
          row["WaitTime"], row["ServiceRating"], row["FoodRating"], row["AmbianceRating"])
         for _, row in df.iterrows()
     ]
     execute_values(cursor, """
-        INSERT INTO Visits (customer_id, visit_frequency, average_spend, preferred_cuisine, 
-                           time_of_visit, group_size, dining_occasion, meal_type, 
-                           online_reservation, delivery_order, loyalty_program_member, 
+        INSERT INTO Visits (customer_id, visit_frequency, average_spend, preferred_cuisine,
                            wait_time, service_rating, food_rating, ambiance_rating)
         VALUES %s
         RETURNING visit_id;
