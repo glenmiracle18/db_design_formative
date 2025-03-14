@@ -1,4 +1,17 @@
-# DATABSE DESIGN  Formative for peer group 2
+# DATABSE DESIGN FORMATIVE (PEER GROUP 2)
+
+## Task 1: Database Design and Schema
+Contributor: Glen Miracle
+Responsibilties:
+The following are the main things I was responsible for:
+- Database Creation
+- Entity Relation Diagram
+- Database Schema design
+- Seeding Scripts
+- Creating Mongodb clusters and db's
+- deploying databases
+
+  
  api address:
 `https://db-design-formative.onrender.com/api/'  
 
