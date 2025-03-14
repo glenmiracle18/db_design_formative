@@ -11,20 +11,26 @@ The following are the main things I was responsible for:
 - Creating Mongodb clusters and db's
 - deploying databases
 
-  
+## Task 2:  APIs
+Contributor: Jordan Nguepi
+-created api for all CRUD operations on the 3 data models
+---
+`Data Models`
+Customer, Visit, Satisfaction
+
  api address:
 `https://db-design-formative.onrender.com/api/'  
 
 available endpoint: 
 ---
 `api/customers/`
-methodes: LIST, CREATE, UPDATE, DELETE
+methods: LIST, CREATE, UPDATE, DELETE
 ---
 `api/visits/`
-methodes: LIST, CREATE, UPDATE, DELETE
+methods: LIST, CREATE, UPDATE, DELETE
 ---
 `api/satisfactions/`
-methodes: LIST, CREATE, UPDATE, DELETE
+methods: LIST, CREATE, UPDATE, DELETE
 
 ![Alt text](api_directory/Screenshot%20from%202025-03-13%2018-22-45.png)
 
@@ -61,8 +67,9 @@ In this project, I handled Task 3, which involved:
 - Scikit-Learn  
 
 ### **Repository Structure**  
+- `db_directory/`→ Database Schema and tables
 - `api_directory/` → Django API  
-- `ml-directory/` → Database models & API views  
+- `ml-directory/` → ML model & and predictions
 - `Task_3_PETER_JOHNSON.ipynb` → Task 3 implementation  
 - `trained_customer_satisfaction_model.keras` → Trained model  
 
