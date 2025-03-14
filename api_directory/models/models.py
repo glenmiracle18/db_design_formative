@@ -26,7 +26,6 @@ class Customer(models.Model):
         overriding the save method to b/c i want to auto increament the customer_id
         """
         if not self.customer_id:
-            print(Customer.objects.all().count())
             self.customer_id = str(int(Customer.objects.annotate(customer_id_int=Cast('customer_id', IntegerField())).order_by('customer_id_int').last().customer_id )+ 1)
         super().save(*args, **kwargs)
 
@@ -34,7 +33,7 @@ class Customer(models.Model):
 
 
 class Visit(models.Model):
-    visit_id = models.AutoField(primary_key=True)
+    visit_id = models.CharField(max_length=10, primary_key=True)
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
 
     VISIT_FREQUENCY_CHOICES = [
@@ -57,9 +56,18 @@ class Visit(models.Model):
         db_table = "visits"
 
 
+    def save(self, *args, **kwargs):
+        """
+        overriding the save method to b/c i want to auto increament the customer_id
+        """
+        if not self.visit_id:
+            self.visit_id = str(int(Visit.objects.annotate(visit_id_int=Cast('visit_id', IntegerField())).order_by('visit_id_int').last().visit_id )+ 1)
+        super().save(*args, **kwargs)
+
+
 
 class Satisfaction(models.Model):
-    satisfaction_id = models.AutoField(primary_key=True)
+    satisfaction_id = models.CharField(max_length=10, primary_key=True)
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
     visit = models.ForeignKey("Visit", on_delete=models.CASCADE)
 
@@ -68,3 +76,12 @@ class Satisfaction(models.Model):
 
     class Meta:
         db_table = "satisfaction"
+
+
+    def save(self, *args, **kwargs):
+        """
+        overriding the save method to b/c i want to auto increament the customer_id
+        """
+        if not self.satisfaction_id:
+            self.satisfaction_id = str(int(Satisfaction.objects.annotate(satisfaction_id_int=Cast('satisfaction_id', IntegerField())).order_by('satisfaction_id_int').last().satisfaction_id )+ 1)
+        super().save(*args, **kwargs)

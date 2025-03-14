@@ -7,22 +7,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# MongoDB Atlas connection string (replace <db_password> with your actual password)
 connection_string = os.getenv("MONGO_CS")
 
 try:
     # Connect to MongoDB Atlas
     client = MongoClient(connection_string, tlsAllowInvalidCertificates=True)
-    db = client["formative_db"]  # Specify your database name (e.g., formative_db)
+    db = client["formative_db"]  # must match exact db name with out mongo db name in the cloud
     collection = db["restaurant_customers"]
 
-    # Load CSV data (replace with your actual file path)
     df = pd.read_csv("restaurant_customer_satisfaction.csv")
 
     # Gender mapping
     gender_map = {"Male": 0, "Female": 1}
 
-    # Prepare and insert documents
+    # document preparation
     documents = []
     for _, row in df.iterrows():
         document = {
