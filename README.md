@@ -1,6 +1,6 @@
-# DATABSE DESIGN  Formative for peer group 2
+# DATABSE DESIGN FORMATIVE (PEER GROUP 2)
 
-# Task 1: Database Design and Schema
+## Task 1: Database Design and Schema
 Contributor: Glen Miracle
 Responsibilties:
 The following are the main things I was responsible for:
