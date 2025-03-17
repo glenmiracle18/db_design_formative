@@ -34,11 +34,10 @@ class SatisfactionViewSet(viewsets.ModelViewSet):
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
 
 
-title = ("Formative Assignment DATABSE DESIGN for peer group 2"
-         "composed of Max, jordan Nguepi and Glen Miracle")
+title = ("Formative Assignment - Database Design -Peer Group 2")
 
-description = ("this is an api for retreiving custormer, the days and number of visite the paid to a store"
-               "and the details about their satisfaction. you can go throu the documentation to see how it works")
+description = ("this is an api for retreiving custormer, the days and number of visit the paid to a store"
+               "and the details about their satisfaction. you can go through the documentation to see how it works")
 
 schema_view = get_schema_view(
     openapi.Info(
